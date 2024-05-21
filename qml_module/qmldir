@@ -1,0 +1,2 @@
+module demo.qml.module
+QmlModuleText 1.0 QmlModuleText.qml

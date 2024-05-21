@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="DemoStaticPlugin">
+        <file>qmldir</file>
+        <file>QmlStaticPluginText.qml</file>
+    </qresource>
+</RCC>

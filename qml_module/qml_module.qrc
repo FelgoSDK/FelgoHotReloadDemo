@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/demo/qml/module">
+        <file>qmldir</file>
+        <file>QmlModuleText.qml</file>
+    </qresource>
+</RCC>

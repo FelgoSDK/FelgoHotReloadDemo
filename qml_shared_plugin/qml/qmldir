@@ -1,0 +1,3 @@
+module Demo.SharedPlugin
+QmlSharedPluginText 1.0 QmlSharedPluginText.qml
+singleton SharedPluginItem 1.0 qt5/SharedPluginItem.qml

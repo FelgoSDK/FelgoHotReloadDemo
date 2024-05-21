@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="Demo/SharedPlugin">
+        <file>qmldir</file>
+        <file>QmlSharedPluginText.qml</file>
+        <file>qt5/SharedPluginItem.qml</file>
+    </qresource>
+</RCC>
