@@ -2,6 +2,9 @@
 #include <QQmlApplicationEngine>
 #include <QQuickView>
 #include <QStringLiteral>
+#ifdef USE_FELGO_HOT_RELOAD
+#include <FelgoHotReload>
+#endif
 
 int main(int argc, char *argv[])
 {
@@ -11,7 +14,11 @@ int main(int argc, char *argv[])
 
     QGuiApplication app(argc, argv);
     QQmlApplicationEngine engine;
+#ifdef USE_FELGO_HOT_RELOAD
+    static FelgoHotReload felgoHotReload(&engine);
+#else
     engine.load(QUrl(QStringLiteral("qrc:/main.qml")));
+#endif
     const auto result = app.exec();
     return result;
 }

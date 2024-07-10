@@ -62,3 +62,9 @@ if(QT_VERSION_MAJOR EQUAL 6)
     qt_import_qml_plugins(FelgoHotReloadDemo)
     qt_finalize_executable(FelgoHotReloadDemo)
 endif()
+
+set(CMAKE_PREFIX_PATH "${FELGO_HOT_RELOAD_PATH};${CMAKE_PREFIX_PATH}")
+
+find_package(FelgoHotReload CONFIG REQUIRED)
+
+felgohotreload_configure_executable(${CURRENT_PROJECT_NAME})

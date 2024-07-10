@@ -26,3 +26,5 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 win32 {
     QMAKE_LFLAGS_WINDOWS += /DEBUG:NONE
 }
+
+include("$${FELGO_HOT_RELOAD_PATH}/qmake/FelgoHotReload.pri")

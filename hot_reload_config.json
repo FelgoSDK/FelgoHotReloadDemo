@@ -1,0 +1,6 @@
+{
+  "main_qml_file": "qml/main.qml",
+  "qml_module_paths": ["qml"],
+  "qml_plugin_paths": ["."],
+  "use_local_plugins": true
+}
