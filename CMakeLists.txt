@@ -12,8 +12,8 @@ set(CMAKE_AUTORCC ON)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Core Quick)
-find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Core Quick)
+find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Core Quick Widgets)
+find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Core Quick Widgets)
 
 set(PROJECT_SOURCES
     main.cpp
@@ -44,7 +44,7 @@ else()
 endif()
 
 target_link_libraries(FelgoHotReloadDemo
-    PRIVATE Qt${QT_VERSION_MAJOR}::Core Qt${QT_VERSION_MAJOR}::Quick)
+    PRIVATE Qt${QT_VERSION_MAJOR}::Core Qt${QT_VERSION_MAJOR}::Quick Qt${QT_VERSION_MAJOR}::Widgets)
 
 set_target_properties(FelgoHotReloadDemo PROPERTIES
     MACOSX_BUNDLE_GUI_IDENTIFIER my.example.com
@@ -58,13 +58,14 @@ install(TARGETS FelgoHotReloadDemo
     BUNDLE DESTINATION .
     LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})
 
+set(CMAKE_PREFIX_PATH "${FELGO_HOT_RELOAD_PATH};${CMAKE_PREFIX_PATH}")
+
+set(CMAKE_FIND_ROOT_PATH_MODE_PACKAGE BOTH)
+find_package(FelgoHotReload CONFIG REQUIRED)
+
+felgohotreload_configure_executable(${CURRENT_PROJECT_NAME})
+
 if(QT_VERSION_MAJOR EQUAL 6)
     qt_import_qml_plugins(FelgoHotReloadDemo)
     qt_finalize_executable(FelgoHotReloadDemo)
 endif()
-
-set(CMAKE_PREFIX_PATH "${FELGO_HOT_RELOAD_PATH};${CMAKE_PREFIX_PATH}")
-
-find_package(FelgoHotReload CONFIG REQUIRED)
-
-felgohotreload_configure_executable(${CURRENT_PROJECT_NAME})
