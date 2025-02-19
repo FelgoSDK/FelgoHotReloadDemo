@@ -1,0 +1,36 @@
+{
+  "main_qml_file": "qml/main.qml",
+
+  "qml_module_paths": [
+    "qml",
+    {
+      "path": "qml_static_plugin",
+      "target_path": "DemoStaticPlugin"
+    },
+    {
+      "path": "qml_shared_plugin",
+      "target_path": "Demo/SharedPlugin"
+    },
+    {
+      "path": "qml_module",
+      "target_path": "demo/qml/module/qml_module"
+    }
+  ],
+
+  "qml_plugin_paths": [
+    {
+      "path": "@FELGO_HOT_RELOAD_DEMO_BIN_DIR@/DemoStaticPlugin",
+      "target_path": "DemoStaticPlugin"
+    },
+    {
+      "path": "@FELGO_HOT_RELOAD_DEMO_BIN_DIR@/Demo/SharedPlugin",
+      "target_path": "Demo/SharedPlugin"
+    },
+    {
+      "path": "@FELGO_HOT_RELOAD_DEMO_BIN_DIR@/demo/qml/module",
+      "target_path": "demo/qml/module"
+    }
+  ],
+
+  "use_local_plugins": true
+}

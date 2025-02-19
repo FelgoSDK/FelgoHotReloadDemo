@@ -59,6 +59,12 @@ install(TARGETS FelgoHotReloadDemo
     BUNDLE DESTINATION .
     LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})
 
+
+set(FelgoHotReload_DIR "${FELGO_HOT_RELOAD_PATH}/lib/cmake/FelgoHotReload" CACHE PATH "FelgoHotReload directory" FORCE)
+find_package(FelgoHotReload CONFIG REQUIRED)
+
+felgohotreload_configure_executable(${CURRENT_PROJECT_NAME})
+
 # Add a static plugin
 add_subdirectory(qml_static_plugin)
 target_link_libraries(FelgoHotReloadDemo PRIVATE
@@ -75,6 +81,19 @@ qt_add_qml_module(FelgoHotReloadDemo
     VERSION 1.0
     NO_PLUGIN
     QML_FILES qml_module/QmlModuleText.qml)
+
+# Generate configuration file
+cmake_path(
+    RELATIVE_PATH CMAKE_CURRENT_BINARY_DIR
+    BASE_DIRECTORY ${CMAKE_SOURCE_DIR}
+    OUTPUT_VARIABLE FELGO_HOT_RELOAD_DEMO_BIN_DIR
+)
+
+configure_file(
+    ${CMAKE_SOURCE_DIR}/hot_reload_config_template.json.in  # Template file
+    ${CMAKE_SOURCE_DIR}/hot_reload_config.json              # Configuration file
+    @ONLY                                                   # Replace occurence of @VAR@
+)
 
 if(QT_VERSION_MAJOR EQUAL 6)
     qt_import_qml_plugins(FelgoHotReloadDemo)

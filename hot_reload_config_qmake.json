@@ -1,0 +1,23 @@
+{
+  "main_qml_file": "qml/main.qml",
+
+  "qml_module_paths": [
+    "qml",
+    {
+      "path": "qml_static_plugin",
+      "target_path": "DemoStaticPlugin"
+    },
+    {
+      "path": "qml_shared_plugin/qml",
+      "target_path": "Demo/SharedPlugin"
+    },
+    {
+      "path": "qml_module",
+      "target_path": "demo/qml/module"
+    }
+  ],
+
+  "qml_plugin_paths": [],
+
+  "use_local_plugins": true
+}
