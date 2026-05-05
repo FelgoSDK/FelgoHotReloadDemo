@@ -61,6 +61,12 @@ install(TARGETS FelgoHotReloadDemo
     BUNDLE DESTINATION .
     LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})
 
+
+set(FelgoHotReload_DIR "${FELGO_HOT_RELOAD_PATH}/lib/cmake/FelgoHotReload" CACHE PATH "FelgoHotReload directory" FORCE)
+find_package(FelgoHotReload CONFIG REQUIRED)
+
+felgohotreload_configure_executable(${CURRENT_PROJECT_NAME})
+
 # Add a static plugin
 add_subdirectory(qml_static_plugin)
 target_link_libraries(FelgoHotReloadDemo PRIVATE
